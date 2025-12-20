@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:ex="http://ENSA.org/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+    <!-- Ontology -->
+    <owl:Ontology rdf:about="http://ENSA.org/"/>
+
+    <!-- Classes -->
+    <owl:Class rdf:about="http://ENSA.org/etudiant"/>
+
+    <owl:Class rdf:about="http://ENSA.org/module"/>
+
+    <owl:Class rdf:about="http://ENSA.org/professeur">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ENSA.org/enseigne"/>
+                <owl:someValuesFrom rdf:resource="http://ENSA.org/module"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="http://ENSA.org/enseigne">
+        <rdfs:domain rdf:resource="http://ENSA.org/professeur"/>
+        <rdfs:range rdf:resource="http://ENSA.org/module"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://ENSA.org/etudie">
+        <rdfs:domain rdf:resource="http://ENSA.org/etudiant"/>
+        <rdfs:range rdf:resource="http://ENSA.org/module"/>
+    </owl:ObjectProperty>
+
+    <!-- Modules -->
+    <owl:NamedIndividual rdf:about="http://ENSA.org/ingenierie-des-connaissance">
+        <rdf:type rdf:resource="http://ENSA.org/module"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://ENSA.org/BigData">
+        <rdf:type rdf:resource="http://ENSA.org/module"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://ENSA.org/deep-learning">
+        <rdf:type rdf:resource="http://ENSA.org/module"/>
+    </owl:NamedIndividual>
+
+    <!-- Etudiants -->
+    <owl:NamedIndividual rdf:about="http://ENSA.org/Abdellah">
+        <rdf:type rdf:resource="http://ENSA.org/etudiant"/>
+        <ex:etudie rdf:resource="http://ENSA.org/ingenierie-des-connaissance"/>
+        <ex:etudie rdf:resource="http://ENSA.org/BigData"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://ENSA.org/Moad">
+        <rdf:type rdf:resource="http://ENSA.org/etudiant"/>
+        <ex:etudie rdf:resource="http://ENSA.org/ingenierie-des-connaissance"/>
+        <ex:etudie rdf:resource="http://ENSA.org/BigData"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://ENSA.org/Rida">
+        <rdf:type rdf:resource="http://ENSA.org/etudiant"/>
+        <ex:etudie rdf:resource="http://ENSA.org/ingenierie-des-connaissance"/>
+        <ex:etudie rdf:resource="http://ENSA.org/BigData"/>
+    </owl:NamedIndividual>
+
+    <!-- Professeurs -->
+    <owl:NamedIndividual rdf:about="http://ENSA.org/Pr.Nidal">
+        <rdf:type rdf:resource="http://ENSA.org/professeur"/>
+        <ex:enseigne rdf:resource="http://ENSA.org/ingenierie-des-connaissance"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://ENSA.org/Pr.Nassima">
+        <rdf:type rdf:resource="http://ENSA.org/professeur"/>
+        <ex:enseigne rdf:resource="http://ENSA.org/BigData"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://ENSA.org/Pr.Khalfi">
+        <rdf:type rdf:resource="http://ENSA.org/professeur"/>
+        <ex:enseigne rdf:resource="http://ENSA.org/deep-learning"/>
+    </owl:NamedIndividual>
+
+</rdf:RDF>

@@ -1,0 +1,56 @@
+@prefix ex: <http://ENSA.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+
+# classes
+ex:etudiant rdf:type owl:Class .
+ex:professeur rdf:type owl:Class ;
+    rdfs:subClassOf [ rdf:type owl:Restriction ;
+                      owl:onProperty ex:enseigne ;
+                      owl:someValuesFrom ex:module ] .
+ex:module rdf:type owl:Class .
+
+# properties
+ex:enseigne rdf:type owl:ObjectProperty ;
+    rdfs:domain ex:professeur ;
+    rdfs:range ex:module .
+
+ex:etudie rdf:type owl:ObjectProperty ;
+    rdfs:domain ex:etudiant ;
+    rdfs:range ex:module .
+
+# objects
+
+
+ex:Abdellah rdf:type ex:etudiant ;
+    ex:etudie ex:ingenierie-des-connaissance ;
+    ex:etudie ex:deep-learning ;
+    ex:etudie ex:BigData .
+
+ex:Moad rdf:type ex:etudiant ;
+    ex:etudie ex:ingenierie-des-connaissance ;
+    ex:etudie ex:deep-learning ;
+    ex:etudie ex:BigData .
+
+ex:Rida rdf:type ex:etudiant ;
+    ex:etudie ex:ingenierie-des-connaissance ;
+    ex:etudie ex:deep-learning ;
+    ex:etudie ex:BigData .
+
+
+ex:Pr.Nidal rdf:type ex:professeur ;
+    ex:enseigne ex:ingenierie-des-connaissance .
+
+ex:Pr.Nassima rdf:type ex:professeur ;
+    ex:enseigne ex:BigData .
+
+ex:Pr.Khalfi rdf:type ex:professeur ;
+    ex:enseigne ex:deep-learning .
+
+
+ex:ingenierie-des-connaissance rdf:type ex:module .
+ex:BigData rdf:type ex:module .
+ex:deep-learning rdf:type ex:module .
+
